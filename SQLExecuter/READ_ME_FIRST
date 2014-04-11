@@ -1,0 +1,14 @@
+
+Note: 
+
+The SQL.g file as distributed in A4.1 will NOT work correctly with a few of these
+queries.  Specifically, it will not parse string literals with a "-" character in
+it.  This is a bad thing, because all of the various "date" strings have this char
+in them.  To fix this, just go into SQL.g and change the rule for CharString to:
+
+CharString
+        :       '"' (('a'..'z') | '-' | ('A'..'Z') | ' ' | ('0'..'9'))* '"'
+        ;
+
+Then recompile, and you should now be able to handle the "-" character in a string
+literal with no problem.

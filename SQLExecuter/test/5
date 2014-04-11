@@ -1,0 +1,22 @@
+
+select
+	"return flag was " + l.l_returnflag,
+	sum (l.l_quantity),
+	sum (l.l_extendedprice),
+	sum (l.l_extendedprice*(1-l.l_discount)),
+	sum (l.l_extendedprice*(1-l.l_discount)*(1+l.l_tax)),
+	avg (l.l_quantity),
+	avg (l.l_extendedprice),
+	avg (l.l_discount),
+	sum (1)
+from
+	lineitem as l
+where
+	(l.l_shipdate < "1998-12-01" or l.l_shipdate = "1998-12-01") and
+        (l.l_shipdate > "1998-06-01" or l.l_shipdate = "1998-06-01")
+group by
+	l.l_returnflag;
+	
+	The run took 29221 milliseconds
+
+return flag was N|7890662|11827803285.760063|11236447287.255714|11686377241.753061|25|38204.239377|0.049997|309594|

@@ -1,0 +1,127 @@
+
+select
+	"date was " + o.o_orderdate,
+	avg (l.l_extendedprice * (1-l.l_discount))
+from
+	part as p,
+	supplier as s,
+	lineitem as l,
+	orders as o,
+	customer as c,
+	nation as n1,
+	nation as n2,
+	region as r1,
+	region as r2
+where
+	(p.p_partkey = l.l_partkey)
+	and (s.s_suppkey = l.l_suppkey)
+	and (l.l_orderkey = o.o_orderkey)
+	and (o.o_custkey = c.c_custkey)
+	and (c.c_nationkey = n1.n_nationkey)
+	and (n1.n_regionkey = r1.r_regionkey)
+	and (r1.r_name = "AMERICA")
+	and (n2.n_regionkey = r2.r_regionkey)
+	and (r2.r_name = "MIDDLE EAST")
+	and (s.s_nationkey = n2.n_nationkey)
+	and (o.o_orderdate > "1995-01-01" or o.o_orderdate = "1995-01-01")
+	and (o.o_orderdate < "1996-12-31" or o.o_orderdate = "1996-12-31")
+	and (p.p_type = "ECONOMY ANODIZED STEEL")
+group by
+	o.o_orderdate;
+	
+sorted The run took 56188 milliseconds
+
+
+
+date was 1995|-57139898.816667|
+date was 87210|-171227.720000|
+date was 65166.500000|3806596.000000|
+date was 9377|-2984.700000|
+date was 1916|0.000000|
+date was 0.000000|-45.000000|
+date was 1540|-761827.000000|
+date was 111280|-4880.000000|
+date was 28153|-65830.000000|
+date was 6896|-236120.000000|
+date was 24508.880000|3671490.000000|
+date was 7587|0.000000|
+date was 7495|0.000000|
+date was 124586|-52969.000000|
+date was 0.020000|-309441.000000|
+date was 4149828|-26616.000000|
+date was 1997|-328541837.440000|
+date was 5023|-1955356.000000|
+date was 5479|0.000000|
+date was 23576|-70642.000000|
+date was 0.100000|-12.000000|
+date was 1046215.000000|-170061.000000|
+date was 1121318|-35164.000000|
+date was 1998|-410506905.600000|
+date was 0.010000|-1674465.000000|
+date was 3502944|-63547.000000|
+date was 4300.000000|-49476.000000|
+date was 7434|0.000000|
+date was 43501|-216226.000000|
+date was 5452|-6738.750000|
+date was 77381|-54520.000000|
+date was 4000550|-96010.000000|
+date was 121844|-322626006528.000000|
+date was 46546.170000|2384125.200000|
+date was 19388.160000|1681716.260000|
+date was 54053.760000|2007013.700000|
+date was 0.050000|-863360.000000|
+date was 5065125|-109701.000000|
+date was 3103456.000000|-1381404.000000|
+date was 78839|-82967258880.000000|
+date was 51263|-33198.000000|
+date was 7846|-1535460.000000|
+date was 70306|-182720.000000|
+date was 4583.000000|-542400.000000|
+date was 30806.820000|4573515.940000|
+date was 4872|-597.200000|
+date was 3255813.000000|-372900.000000|
+date was 134282|-9207.000000|
+date was 372230|-69243.000000|
+date was 47036.550000|1242391.950000|
+date was 5470628|-104893.000000|
+date was 43908|-257646.800000|
+date was 106046|-4043.000000|
+date was 19529.100000|2592601.110000|
+date was 38050|-590893407776.000000|
+date was 11444|-121720.000000|
+date was 53797|-104975.000000|
+date was 0.080000|-33.000000|
+date was 17|-15976.000000|
+date was 1000707|-2076.000000|
+date was 8695.000000|-218416.000000|
+date was 47756.280000|2327913.670000|
+date was 3626340.000000|-683055.000000|
+date was 117244|-44670.000000|
+date was 47912|-250864.480000|
+date was 5896.000000|-374652.000000|
+date was 1265|0.000000|
+date was 10019.450000|3824758.800000|
+date was 8851|-340368.400000|
+date was 2103490|-135111.000000|
+date was 70732|-138480.000000|
+date was 24|-30628.333333|
+date was 14960|-284390.240000|
+date was 4583|0.000000|
+date was 95690|-207136.040000|
+date was 13|-10895704873.166666|
+date was 20|-12323674758.000000|
+date was 10|-24294862491.500000|
+date was 12710|-110249.440000|
+date was 6988|-231413.680000|
+date was 1052352.000000|-362811.000000|
+date was 77998|-3382.000000|
+date was 5986|-33.820000|
+date was 89782|-95360.000000|
+date was 2276|-86.630000|
+date was 9184|0.000000|
+date was 1907|0.000000|
+date was 4|-4589932661429.187500|
+date was 3|-1996.500000|
+date was 2|-997.500000|
+date was 1|-121272711.645161|
+
